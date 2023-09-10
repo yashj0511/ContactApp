@@ -23,6 +23,7 @@
   </style>
 </head>
 <body>
+<!--   navbar start-->
   <nav class="site-nav grid">
     <h1>Cosmo Junkie</h1>
     <ul>
@@ -31,10 +32,12 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
-  
+<!--   navbar end -->
+<!--   sucessmessege display for few sec after form submission -->
   <div id="successMessage" style="display:none;">
     <span>Message sent successfully!</span>
 </div>
+<!--   welcom section start -->
 <section id="welcome" class="grid">
     <div class="welcome-text">
       <h2>Space Enthusiast<br />& JavaScript Developer</h2>
@@ -42,7 +45,6 @@
       <a href="#portfolio" class="button">View my work</a>
     </div>
     <!-- toggle class on submit data -->
-
 
     <div class="welcome-img">
       <img src="assets/banner_image.png" alt="pic of planet">
@@ -63,12 +65,12 @@
         <img src="assets/project_3.png" alt="captain cosmo image">
         <h4>Captain Cosmo Blog</h4>
       </a>
-      <!-- <a href="#">
-        <img src="assets/project_3.png" alt="captain cosmo image">
-        <h4>Captain Cosmo Blog 2</h4>
-      </a> -->
+      
     </div>
   </section>
+<!--   welcome section end -->
+
+<!--   skills section start -->
   <section id="skills">
     <h3>Things I Can Do</h3>
     <ul class="grid">
@@ -91,12 +93,14 @@
     </ul>
     <p class="leading">I have done development in Django,Flask,React,Node,Express MongoDB so I have good understanding of Full stack development.</p>
   </section>
+<!-- skill section end -->
 
+<!--   contact section start -->
   <section id="contact">
     <h3>Get In Touch</h3>
     <p class="leading"> If there is any query free to ask me </p>
 
-    
+<!--   contact form -->
     <form id="form" action="" method="post" onsubmit="return validateForm();">
       <span id="nameError" class="error"></span>
       <input type="text" placeholder='NAME' name="name" id="name">
@@ -110,7 +114,9 @@
       <button class="button" id="btn" type="submit" value="Submit">Send</button>
     </form>
   </section>
- 
+<!--  contatct section end -->
+
+<!--   footer start -->
   <footer>
     <div class="grid">
       <p class="copyright">Copyright 2023 Cosmo Junkie</p>
@@ -120,9 +126,10 @@
       </ul>
     </div>
   </footer>
-
+<!-- footer end -->
   <script src="./script.js"></script>
   <?php
+//to avoid warning to display on same page
 if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) && isset($_POST['messege']))
 {
 $name=$_POST['name'];
@@ -163,22 +170,18 @@ else
         $messageErr = "Message is required";
     }
    
-// echo empty($nameErr),empty($emailErr),empty($messageErr);
+    //check if all are valid the only insert data to database thet is server side validation
     if (empty($nameErr) && empty($emailErr) && empty($messageErr) && empty($subjectErr)) 
     {
        
     $stmt=$conn->prepare("insert into messeges(name,email,subject,messege)values(?,?,?,?)");
-    $stmt->bind_param("ssss",$name,$email,$subject,$messege);
+    $stmt->bind_param("ssss",$name,$email,$subject,$messege);//binding parameters to variables
     $stmt->execute();
-    // echo "Thanks for the connecting";
     $stmt->close();
     $conn->close();
    
     }
-     else
-     {
-//  echo 'Plese fill form properly',$nameErr,$emailErr,$messageErr,$subjectErr;
-     }
+   
 
 }
 }
