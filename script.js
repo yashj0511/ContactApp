@@ -59,7 +59,7 @@ function validateForm()
         {
             document.getElementById('successMessage').style.display = 'none';
             
-        }, 2000); // 2000 milliseconds (2 seconds)
+        }, 3000); // 3000 milliseconds (3 seconds)
 
         
 
@@ -108,7 +108,7 @@ btn.addEventListener('ontouchstart',(e)=>
         const message = document.getElementById('messege');
         message.value='';
     
-    }, 4000);
+    }, 5000);
     console.log('Submitting');
     }
     
