@@ -1,6 +1,6 @@
-// Function to validate the contact form
-const form = document.getElementById('form');
 
+const form = document.getElementById('form');
+// Function to validate the contact form
 function validateForm() 
 {
     
@@ -16,8 +16,7 @@ function validateForm()
     document.getElementById('subjectError').textContent = '';
     document.getElementById('messageError').textContent = '';
 
-    // Rest of your validation code remains the same
-    // ...
+    
     // Validate name
     if (name === '') 
     {
@@ -99,6 +98,7 @@ btn.addEventListener('ontouchstart',(e)=>
         
     setTimeout( () => {
         form.submit()
+        //reset values
         const name = document.getElementById('name');
         name.value='';
         const email = document.getElementById('email');
@@ -109,7 +109,7 @@ btn.addEventListener('ontouchstart',(e)=>
         message.value='';
     
     }, 5000);
-    console.log('Submitting');
+    console.log('Submitting');//for confirmation on production you can comment this
     }
     
 })
